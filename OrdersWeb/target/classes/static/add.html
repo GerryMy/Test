@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style type="text/css">
+    span {
+        color: red;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .a {
+        text-align: left;
+    }
+
+    .c {
+        text-align: center;
+        width: 500px;
+    }
+</style>
+<script type="text/javascript">
+    function check() {
+        var productName = document.getElementById("productName");
+        if (productName.value == "") {
+            alert("请将信息填写完整");
+            return false;
+        }
+        var productDesc = document.getElementById("productDesc");
+        if (productDesc.value == "") {
+            alert("请将信息填写完整");
+            return false;
+        }
+        var productUnit = document.getElementById("productUnit");
+        if (productUnit.value == "") {
+            alert("请将信息填写完整");
+            return false;
+        }
+        var productCount = document.getElementById("productCount").value;
+        var d_productCount = /^[0-9]{1,5}$/;
+        if (!d_productCount.test(productCount)) {
+            alert("总数量只能为数字");
+            return false;
+        }
+        var totalPrice = document.getElementById("totalPrice").value;
+        var d_totalPrice = /^[0-9]{1,5}$/;
+        if (!d_totalPrice.test(totalPrice)) {
+            alert("总金额只能为数字");
+            return false;
+        }
+    }
+
+</script>
+<body>
+<div>
+    <form action="/add" method="post" onsubmit="return check()">
+        <table width="500" border="1" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+                <td colspan="2"><font size="6">新增订单</font></td>
+            </tr>
+            <tr>
+                <td>商品名称</td>
+                <td class="a"><input type="text" name="productName" id="productName"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>商品描述</td>
+                <td class="a"><input type="text" name="productDesc" id="productDesc"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>商品单位</td>
+                <td class="a"><input type="text" name="productUnit" id="productUnit"><span>*</span></td>
+            </tr>
+            <tr>
+                <td>总数量</td>
+                <td class="a"><input type="text" name="productCount" id="productCount" placeholder="最多5位"><span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>总金额</td>
+                <td class="a"><input type="text" name="totalPrice" id="totalPrice" placeholder="最多5位"><span>*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>是否付款</td>
+                <td class="a"><input class="a" type="radio" checked="checked" name="isPayment" value=1>未支付<input
+                        type="radio"
+                        name="isPayment"
+                        value=2>已支付
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="提交">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </form>
+</div>
+<div class="c">
+    <a href="/findAll" class="a">返回</a>
+</div>
+</body>
+</html>
